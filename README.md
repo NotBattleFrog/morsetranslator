@@ -1,2 +1,2 @@
 # morsetranslator
-This program for translating morse code into tezt and vice versa.
+This program is for translating morse code into text and vice versa.
