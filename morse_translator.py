@@ -52,22 +52,25 @@ morse = { 'A' : '.-'    ,
           '+' : '.-.-.' ,
           '"' : '.-..-.' ,
           '$' : '...-..-' ,
-          ' ' : '|'     }
+          ' ' : '|'
+          }
 
 inverse_morse = {v:k for k,v in morse.items()}
 
-def toCode(sentence) :
-    encoded = ''
-    up_sen = sentence.upper()
-    for char in up_sen :
-            encoded += morse.get(char,'<UKN>') # <UKN> = Unknown
-    return encoded
+def encode(word) :
+    data = ''
+    up_word = word.upper()
+    for char in up_word:
+        data += morse.get(char,'<Unknown>')+" "
+    return data
           
-def toWord(code) :
-    decoded = ''
+def decode(code) :
+    data = ''
     splited = code.split()
     for char in splited :
-            decoded += inverse_morse.get(char,'<UKN>')
-    return decoded
+            data += inverse_morse.get(char,'<Unknown>')
+    return data
+
+
 
 
