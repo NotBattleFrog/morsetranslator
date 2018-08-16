@@ -90,10 +90,13 @@ def toSound(code):
                dot.play()
                time.sleep(0.2)
         elif i == '-':
-               dash.play()
-               time.sleep(0.4)
+              dash.play()
+              time.sleep(0.4)
+        elif i == '|':
+               time.sleep(0.8)
         else:
-            time.sleep(0.4)
+              time.sleep(0.4)
+
 
 
 
