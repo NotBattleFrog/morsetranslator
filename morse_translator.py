@@ -9,26 +9,6 @@ dot = pyglet.media.StaticSource(pyglet.media.load(sound_path+"dot_sound.ogg")) #
 dash = pyglet.media.StaticSource(pyglet.media.load(sound_path+"dash_sound.ogg")) # 0.3s
 #time.sleep(0.1,0.3,0.7) # gap between (symbols,letters,words)
 #dot = 0.1s , dash = 0.3s
-
-def t(code): # out of range
-   i = 0
-   for i in range(len(code)):
-        if code[i] == '.':
-            if code[i+1] == ' ':
-                dot.play()
-                time.sleep(0.4)
-            else:
-               dot.play()
-               time.sleep(0.2)
-        elif code[i] == '-':
-            if code[i+1] == ' ':
-                dash.play()
-                time.sleep(0.4)
-            else:
-               dash.play()
-               time.sleep(0.2)  
-        else:
-            time.sleep(0.4)
             
 morse = {
     'A' : '.-',
@@ -90,19 +70,30 @@ morse = {
 
 inverse_morse = {v:k for k,v in morse.items()}
 
-def encode(word) :
+def toCode(word) :
     data = ''
     up_word = word.upper()
     for char in up_word:
         data += morse.get(char,'<Unknown>') + ' '
     return data
           
-def decode(code) :
+def toWord(code) :
     data = ''
     splited = code.split()
     for char in splited :
             data += inverse_morse.get(char,'<Unknown>')
     return data
+
+def toSound(code):
+   for i in code:
+        if i == '.':
+               dot.play()
+               time.sleep(0.2)
+        elif i == '-':
+               dash.play()
+               time.sleep(0.4)
+        else:
+            time.sleep(0.4)
 
 
 
