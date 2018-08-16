@@ -85,14 +85,14 @@ def encode(word) :
     data = ''
     up_word = word.upper()
     for char in up_word:
-        data += morse.get(char,'Unknown')+" "
+        data += morse.get(char,'<Unknown>') + ' '
     return data
           
 def decode(code) :
     data = ''
     splited = code.split()
     for char in splited :
-            data += inverse_morse.get(char,'Unknown')
+            data += inverse_morse.get(char,'<Unknown>')
     return data
 
 
