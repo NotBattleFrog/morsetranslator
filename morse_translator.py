@@ -10,17 +10,26 @@ dash = pyglet.media.StaticSource(pyglet.media.load(sound_path+"dash_sound.ogg"))
 #time.sleep(0.1,0.3,0.7) # gap between (symbols,letters,words)
 #dot = 0.1s , dash = 0.3s
 
-def t(code):
-    for char in code:
-        if char == '.':
-            dot.play()
-            time.sleep(0.1)
-        elif char == '-':
-            dash.play()
-            time.sleep(0.1)
+def t(code): # out of range
+   i = 0
+   for i in range(len(code)):
+        if code[i] == '.':
+            if code[i+1] == ' ':
+                dot.play()
+                time.sleep(0.4)
+            else:
+               dot.play()
+               time.sleep(0.2)
+        elif code[i] == '-':
+            if code[i+1] == ' ':
+                dash.play()
+                time.sleep(0.4)
+            else:
+               dash.play()
+               time.sleep(0.2)  
         else:
-            time.sleep(0.1)
-                       
+            time.sleep(0.4)
+            
 morse = {
     'A' : '.-',
     'B' : '-...',
