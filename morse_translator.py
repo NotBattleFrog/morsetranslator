@@ -5,11 +5,11 @@ import os
 import pyglet # require avbin : https://avbin.github.io/AVbin/Download.html
 
 sound_path = os.getcwd()+r'\sounds'+"\\"
-dot = pyglet.media.StaticSource(pyglet.media.load(sound_path+"dot_sound.ogg")) # 0.1s
-dash = pyglet.media.StaticSource(pyglet.media.load(sound_path+"dash_sound.ogg")) # 0.3s
-#time.sleep(0.1,0.3,0.7) # gap between (symbols,letters,words)
-#dot = 0.1s , dash = 0.3s
-            
+#dot (0.1s) and dash(0.3s) sound -> 600Hz
+#gap testing (symbols,letters,words) (0.2,0.4,0.8)
+dot = pyglet.media.StaticSource(pyglet.media.load(sound_path+"dot_sound.wav")) 
+dash = pyglet.media.StaticSource(pyglet.media.load(sound_path+"dash_sound.wav")) 
+
 morse = {
     'A' : '.-',
     'B' : '-...',
@@ -69,19 +69,19 @@ morse = {
     }
 
 inverse_morse = {v:k for k,v in morse.items()}
-
+# ^ -> Unknown
 def toCode(word) :
     data = ''
     up_word = word.upper()
     for char in up_word:
-        data += morse.get(char,'<Unknown>') + ' '
+        data += morse.get(char,'^') + ' '
     return data
           
 def toWord(code) :
     data = ''
     splited = code.split()
     for char in splited :
-            data += inverse_morse.get(char,'<Unknown>')
+            data += inverse_morse.get(char,'^')
     return data
 
 def toSound(code):
@@ -96,8 +96,3 @@ def toSound(code):
                time.sleep(0.8)
         else:
               time.sleep(0.4)
-
-
-
-
-
