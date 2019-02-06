@@ -2,6 +2,7 @@
 #ref : https://en.wikipedia.org/wiki/Morse_code
 import time
 import os 
+import re
 import pyglet # require avbin : https://avbin.github.io/AVbin/Download.html
 
 sound_path = os.getcwd()+r'\sounds'+"\\"
@@ -96,3 +97,6 @@ def toSound(code):
                time.sleep(0.8)
         else:
               time.sleep(0.4)
+                
+def isMorseCode(text):
+	return not bool(re.search('[a-zA-Z0-9,?!;:/\'()_@&=+"$]',text))
