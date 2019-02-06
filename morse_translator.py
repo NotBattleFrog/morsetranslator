@@ -99,4 +99,4 @@ def toSound(code):
               time.sleep(0.4)
                 
 def isMorseCode(text):
-	return not bool(re.search('[a-zA-Z0-9,?!;:/\'()_@&=+"$]',text))
+	return bool(re.match('[-. ]+$',text))
