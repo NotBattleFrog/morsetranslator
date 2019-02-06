@@ -40,7 +40,7 @@ def clicked(i : int):
         outputarea.configure(text= "Type something...")
     elif i == 6: # translate_clicked
        data = inputarea.get()
-       if data[0] == '.' or data[0] == '-' : # morse to text
+       if morse_translator.isMorseCode(data[0]): # morse to text
            output = morse_translator.toWord(data)
            outputarea.configure(text= output)
            morse_translator.toSound(data)
