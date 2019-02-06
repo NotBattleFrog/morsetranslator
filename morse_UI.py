@@ -2,7 +2,7 @@
 import tkinter
 from tkinter import *
 from PIL import Image, ImageTk
-import morse_translator
+import morse_translator as mt
 
 #UI setup
 ui = tkinter.Tk()
@@ -40,12 +40,12 @@ def clicked(i : int):
         outputarea.configure(text= "Type something...")
     elif i == 6: # translate_clicked
        data = inputarea.get()
-       if morse_translator.isMorseCode(data[0]): # morse to text
-           output = morse_translator.toWord(data)
+       if mt.isMorseCode(data[0]): # morse to text
+           output = mt.toWord(data)
            outputarea.configure(text= output)
-           morse_translator.toSound(data)
+           mt.toSound(data)
        else: # text to morse
-            output = morse_translator.toCode(data)
+            output = mt.toCode(data)
             outputarea.configure(text= output)
     elif i == 7: # copy_clicked
         data = outputarea.cget("text")
